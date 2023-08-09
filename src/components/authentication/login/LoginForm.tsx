@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
+
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
 import { Icon } from '@iconify/react';
@@ -15,7 +16,26 @@ import {
     FormControlLabel
 } from '@material-ui/core';
 import { LoadingButton } from '@material-ui/lab';
+import {
+  StreamType,
+  useApp,
+  useCreateStream,
+  useFeedsByAddress,
+  useMonetizeStream,
+  useStore,
+  useUnlockStream,
+  useUpdateStream,
+} from "@dataverse/hooks";
+import { Model, ModelParser, Output } from "@dataverse/model-parser";
+import { DataverseContextProvider } from "@dataverse/hooks";
 
+import app from "../../../../output/app.json";
+import pacakage from "../../../../package.json";
+
+
+
+const appVersion = pacakage.version;
+const modelParser = new ModelParser(app as Output);
 // ----------------------------------------------------------------------
 
 const LoginForm = (): JSX.Element => {
@@ -30,11 +50,11 @@ const LoginForm = (): JSX.Element => {
     });
 
     const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-            remember: true
-        },
+      initialValues: {
+          email: '',
+          password: '',
+          remember: true
+      },
         validationSchema: LoginSchema,
         onSubmit: () => {
             navigate('/dashboard', { replace: true });
@@ -46,10 +66,21 @@ const LoginForm = (): JSX.Element => {
     const handleShowPassword = () => {
         setShowPassword((show) => !show);
     };
+    const { connectApp } = useApp({
+      onSuccess: (result) => {
+        console.log("[connect]connect app success, result:", result);
+      },
+    });
+
+    const connect = useCallback(async () => {
+      connectApp({
+        appId: modelParser.appId,
+      });
+    }, [modelParser]);
 
     return (
         <FormikProvider value={formik}>
-            <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+            <Form autoComplete="off" noValidate onSubmit={connect}>
                 <Stack spacing={3}>
                     <TextField
                         fullWidth
