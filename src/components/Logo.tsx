@@ -8,7 +8,7 @@ interface Props {
 
 const Logo = (props: Props): JSX.Element => {
     const { sx } = props;
-    return <Box component="img" src={LogoImage} sx={{ width: 40, height: 40, ...sx }} />;
+    return <Box component="img" src={LogoImage} sx={{ width: 75, height: 75, ...sx }} />;
 };
 
 export default Logo;
