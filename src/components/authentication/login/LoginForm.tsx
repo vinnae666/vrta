@@ -66,6 +66,12 @@ const LoginForm = (): JSX.Element => {
     const handleShowPassword = () => {
         setShowPassword((show) => !show);
     };
+
+    const {
+      state: { address, pkh },
+    } = useStore();
+
+
     const { connectApp } = useApp({
       onSuccess: (result) => {
         console.log("[connect]connect app success, result:", result);
