@@ -10,8 +10,10 @@ import Blog from '@/pages/Blog';
 import User from '@/pages/User';
 import NotFound from '@/pages/Page404';
 
+
 export const Router = (): ReactElement => {
     return (
+ 
         <Routes>
             <Route path="/dashboard" element={<DashboardLayout />}>
                 <Route path="" element={<Navigate to="/dashboard/app" replace />} />
@@ -19,6 +21,7 @@ export const Router = (): ReactElement => {
                 <Route path="user" element={<User />} />
                 <Route path="products" element={<Products />} />
                 <Route path="blog" element={<Blog />} />
+               
             </Route>
             <Route path="/" element={<LogoOnlyLayout />}>
                 <Route path="login" element={<Login />} />
@@ -28,6 +31,7 @@ export const Router = (): ReactElement => {
                 <Route path="*" element={<Navigate to="/404" />} />
             </Route>
         </Routes>
+   
     );
 };
 

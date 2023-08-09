@@ -1,0 +1,8 @@
+type blog @createModel(accountRelation: LIST, description: "post") {
+  author: DID! @documentAccount
+  version: CommitID! @documentVersion
+  title: String @string(maxLength: 100)
+  content: String @string(maxLength: 300000000)
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

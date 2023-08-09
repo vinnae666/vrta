@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "private": false,
   "homepage": "https://reactZone.github.io/vite-react-ts-admin",
+  "type": "module",
   "scripts": {
     "dev": "cross-env NODE_ENV=local vite --host",
     "dev:stg": "cross-env NODE_ENV=stg vite",
@@ -14,7 +15,7 @@
     "build:prod": "cross-env vite build --mode production",
     "deploy": "gh-pages -d dist",
     "lint": "eslint --ext .jsx,.js,.ts,.tsx .",
-    "fix": "yarn lint --fix"
+    "fix": "vite lint --fix"
   },
   "browserslist": {
     "production": [
@@ -29,6 +30,11 @@
     ]
   },
   "dependencies": {
+    "@composedb/devtools": "^0.4.4",
+    "@dataverse/dataverse-connector": "^1.0.23",
+    "@dataverse/hooks": "^1.0.12",
+    "@dataverse/model-parser": "^1.0.2",
+    "@dataverse/runtime-connector": "^1.0.60",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@faker-js/faker": "^7.6.0",
@@ -40,10 +46,15 @@
     "@material-ui/lab": "^5.0.0-alpha.43",
     "@material-ui/styles": "^5.0.0-beta.4",
     "@material-ui/utils": "^5.0.0-beta.4",
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
+    "@types/browserify": "^12.0.37",
+    "@vite/vitejs-client": "^2.2.10",
     "apexcharts": "^3.37.0",
+    "chalk": "^5.3.0",
     "change-case": "^4.1.2",
     "date-fns": "^2.29.3",
+    "ethers": "^6.7.0",
     "formik": "^2.2.9",
     "framer-motion": "^9.0.4",
     "history": "^5.3.0",
@@ -53,6 +64,8 @@
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^1.3.0",
+    "react-json-view": "^1.21.3",
+    "react-redux": "^8.1.2",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "simplebar": "^6.2.1",
@@ -62,7 +75,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.4.4",
-    "@types/node": "^18.14.0",
+    "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/react-router-dom": "^5.3.3",
@@ -71,6 +84,7 @@
     "@vitejs/plugin-react-refresh": "^1.3.6",
     "commitlint": "^17.4.4",
     "cross-env": "^7.0.3",
+    "env-cmd": "^10.1.0",
     "eslint": "^8.34.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.6.0",
@@ -81,6 +95,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "gh-pages": "^5.0.0",
     "prettier": "^2.8.4",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-polyfills": "^0.2.1",
     "typescript": "^4.9.5",
     "vite": "^4.1.3"
   }

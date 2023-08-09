@@ -18,6 +18,9 @@ export default defineConfig({
             '@': path.resolve(__dirname, 'src')
         }
     },
+ define: {
+    "process.env": {},
+  },
     server: {
         cors: true,
         port: process.env.VITE_PORT as unknown as number,
